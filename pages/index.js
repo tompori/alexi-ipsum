@@ -43,6 +43,12 @@ const Button = styled.button`
   }
 `;
 
+const Again = styled.div`
+  color: #c2d7db;
+  font-size: 3rem;
+  margin: 2rem 0 4rem;
+`;
+
 const Ipsum = styled.div`
   background: #293d40;
   border-radius: 1rem;
@@ -50,8 +56,12 @@ const Ipsum = styled.div`
   text-align: center;
   padding: 4rem 8rem;
   margin: 0 0 8rem;
-  font-size: 4rem;
+  font-size: 2rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
   white-space: pre;
+  word-wrap: normal;
 `;
 
 const snippets = [
@@ -141,6 +151,7 @@ export default function Home() {
       </Description>
       {ipsum && <Ipsum>{ipsum}</Ipsum>}
       <Button onClick={generate}>{ipsum ? "Again!" : "Generate"}</Button>
+      {ipsum && <Again>...and again and on and on...</Again>}
     </Container>
   );
 }
