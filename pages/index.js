@@ -14,8 +14,9 @@ const Container = styled.div`
 const Title = styled.h1`
   color: white;
   font-size: 16rem;
+  font-weight: normal;
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 2rem 0 4rem;
 `;
 
 const Description = styled.div`
