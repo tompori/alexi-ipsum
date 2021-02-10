@@ -13,8 +13,15 @@ const Container = styled.div`
 
 const Title = styled.h1`
   color: white;
-  font-size: 12rem;
+  font-size: 16rem;
   text-align: center;
+  margin-bottom: 4rem;
+`;
+
+const Description = styled.div`
+  color: #c2d7db;
+  font-size: 4rem;
+  margin-bottom: 8rem;
 `;
 
 const Button = styled.button`
@@ -129,6 +136,9 @@ export default function Home() {
   return (
     <Container>
       <Title>Alexi Ipsum</Title>
+      <Description>
+        End of fucking lorem ipsum. Make your placeholder text a fucking story.
+      </Description>
       {ipsum && <Ipsum>{ipsum}</Ipsum>}
       <Button onClick={generate}>{ipsum ? "Again!" : "Generate"}</Button>
     </Container>
