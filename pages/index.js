@@ -1,65 +1,130 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useState } from "react";
+import styled from "styled-components";
+import { LoremIpsum } from "lorem-ipsum";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  margin: auto;
+`;
+
+const Title = styled.h1`
+  color: white;
+  font-size: 12rem;
+  text-align: center;
+`;
+
+const Button = styled.button`
+  background: #176395;
+  border: none;
+  border-radius: 100rem;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.75);
+  color: white;
+  font-family: "Civitype-FG";
+  font-size: 6rem;
+  padding: 3rem 8rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.33s;
+  :hover {
+    background: #003967;
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.9);
+  }
+`;
+
+const Ipsum = styled.div`
+  background: #293d40;
+  border-radius: 1rem;
+  color: #c2d7db;
+  text-align: center;
+  padding: 4rem 8rem;
+  margin: 0 0 8rem;
+  font-size: 4rem;
+  white-space: pre;
+`;
+
+const snippets = [
+  "ashes of molten hatred",
+  "Raised by",
+  "demons",
+  "abodes of the end",
+  "The reaper's scythe",
+  "I fall upon to",
+  "light my path",
+  "mangled wounds",
+  "The resurrection of the evil one",
+  "I don't fucking care",
+  "if I live or die",
+  "bishop preaching fire",
+  "get away with my sins",
+  "Despise everything I see",
+  "Ain't got respect for humanity",
+  "immortality",
+  "The reaper's shadow",
+  "obscure my path",
+  "Every day",
+  "I'm getting battered up",
+  "until I bleed",
+  "You motherfuckers just leave me be",
+  "the pain I feel inside",
+  "I don't give a fuck",
+  "if you hate me",
+  "Led by the reaper",
+  "I walk in the night",
+  "Show me the way",
+  "your kingdom come",
+  "I believe in Armageddon",
+  "Baptized in alcohol",
+  "Embodiment of anti-Christ",
+  "I'm living for my own demise",
+];
+
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 1,
+    min: 1,
+  },
+  wordsPerSentence: {
+    max: 8,
+    min: 4,
+  },
+});
+
+const insertSnippet = (loremArray, snippets) => {
+  const arrLen = loremArray.length;
+  const index = Math.floor(Math.random() * (arrLen - 2) + 2);
+  const snippetLen = snippets.length;
+  const snippetIndex = Math.floor(Math.random() * (snippetLen - 0) + 0);
+  return loremArray.splice(index, 0, snippets[snippetIndex]);
+};
 
 export default function Home() {
+  const [ipsum, setIpsum] = useState("");
+
+  const generate = (e) => {
+    e.preventDefault();
+    const newLorem = lorem.generateParagraphs(12);
+    const loremArray = newLorem.split(" ");
+    const alexiIpsumArray = ["Alexi", "ipsum", ...loremArray.slice(1)];
+    insertSnippet(alexiIpsumArray, snippets);
+    insertSnippet(alexiIpsumArray, snippets);
+    insertSnippet(alexiIpsumArray, snippets);
+    insertSnippet(alexiIpsumArray, snippets);
+    insertSnippet(alexiIpsumArray, snippets);
+    insertSnippet(alexiIpsumArray, snippets);
+    const alexiIpsum = alexiIpsumArray.join(" ");
+    setIpsum(alexiIpsum);
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    <Container>
+      <Title>Alexi Ipsum</Title>
+      {ipsum && <Ipsum>{ipsum}</Ipsum>}
+      <Button onClick={generate}>{ipsum ? "Again!" : "Generate"}</Button>
+    </Container>
+  );
 }

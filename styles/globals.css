@@ -1,9 +1,22 @@
+@font-face {
+  font-family: "Civitype-FG";
+  src: url("/fonts/Civitype-FG.ttf.woff") format("woff"),
+    url("/fonts/Civitype-FG.ttf.svg#Civitype-FG") format("svg"),
+    url("/fonts/Civitype-FG.ttf.eot"),
+    url("/fonts/Civitype-FG.ttf.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
+  background: #00171a;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Civitype-FG", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  font-size: 10px;
 }
 
 a {
