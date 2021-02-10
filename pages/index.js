@@ -81,6 +81,12 @@ const snippets = [
   "Baptized in alcohol",
   "Embodiment of anti-Christ",
   "I'm living for my own demise",
+  "Reaper",
+  "Jau jau",
+  "Motherfucker",
+  "Flying fuck",
+  "Fuck",
+  "Cunt",
 ];
 
 const lorem = new LoremIpsum({
